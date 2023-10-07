@@ -19,3 +19,4 @@ if orig_num < 0:
     print('Ваше изменённое число: -', fig3, fig1, fig2, sep='')
 else:
     print('Ваше изменённое число: ', fig3, fig1, fig2, sep='')
+    #gfjkaeryog/qr
