@@ -10,4 +10,4 @@ matches = re.findall(pattern, content)
 
 count = len(matches)
 
-print(f"Количество лет деятельности писателя: {matches, count}")
+print(f"Количество лет деятельности писателя: {matches}, всего {count}")
