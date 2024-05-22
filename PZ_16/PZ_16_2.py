@@ -28,31 +28,39 @@ section .text
     global _start
 
 _start:
-    mov eax, 2  ; a = 2
-    mov ebx, 3  ; b = 3
-    cmp eax, ebx  ; сравниваем a и b
-    jge swap     ; если a >= b, переходим к swap
-    jmp end      ; в противном случае переходим к end
-
-swap:
-    push eax     ; сохраняем a в стек
-    push ebx     ; сохраняем b в стек
-    mov eax, ebx ; a = b
-    pop ebx      ; восстанавливаем b из стека
-    pop edi      ; восстанавливаем a из стека
-    mov edx, eax ; edx = a
-    mul ebx      ; edx = a * b
-    mov eax, edx ; eax = a * b
-    mul 2        ; eax = 2 * (a * b)
-    mov ebx, eax ; b = 2 * (a * b)
-    mov eax, edx ; a = 2 * (a * b)
-
-end:
-    mov esi, eax  ; выводим a в консоль
-    mov edi, MSG_A
-    call write_int
+    mov ebx, [a]
     
-    mov esi, ebx  ; выводим b в консоль
+    mov ecx, [b] 
+    
+    mov eax, ebx
+    mul ecx
+    mul [dvoika]
+    cmp ebx, ecx
+    jl if
+    jmp else
+if:
+    mov ebx, eax
+    ret
+else:
+    mov ecx, eax
+    ret
+    
+    mov  edx, ebx
+    mov  edx, 1
+    mov  ebx, 1
+    mov  eax, 4
+    int 0x80
+
+    mov  edx, ecx
+    mov  edx, 1
+    mov  ebx, 1
+    mov  eax, 4
+    int 0x80
+
+section .data
+a db 3
+b db 4
+dvoika db 2    mov esi, ebx  ; выводим b в консоль
     mov edi, MSG_B
     call write_int
 
