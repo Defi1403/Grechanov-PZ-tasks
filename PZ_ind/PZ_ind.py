@@ -4,7 +4,7 @@ count = 0
 max_count = 0
 i = 0
 while i < len(f_r):
-    if (f_r[i]=='C' or f_r[i]=='D' or f_r[i]=='F') and (f_r[i+1]=='A' or f_r[i+1]=='E'):
+    if (f_r[i]=='A' or f_r[i]=='E') and (f_r[i+1]=='C' or f_r[i+1]=='D' or f_r[i+1]=='F'):
         count += 1
         i += 2 
         if max_count < count:
